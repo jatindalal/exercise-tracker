@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 
 import Workout from "../assets/Workout";
 
@@ -10,6 +11,8 @@ interface post {
 }
 
 const WorkoutDetails: FunctionComponent<post> = ({ workout }) => {
+  const { dispatch } = useWorkoutsContext();
+
   const handleClick = async () => {
     const response = await fetch(
       "http://localhost:4000/api/workouts/" + workout._id,
@@ -19,7 +22,8 @@ const WorkoutDetails: FunctionComponent<post> = ({ workout }) => {
     );
     const json = await response.json();
 
-    if (response.ok) console.log(json);
+    if (response.ok && dispatch)
+      dispatch({ type: "DELETE_WORKOUT", payload: [json] });
   };
 
   return (
