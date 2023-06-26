@@ -1,5 +1,5 @@
 import { FunctionComponent, createContext, useReducer } from "react";
-import Workout from "../assets/Workout";
+import { Workout } from "../assets/Workout";
 
 type WorkoutsContextType = {
   dispatch?: React.Dispatch<Action>;
