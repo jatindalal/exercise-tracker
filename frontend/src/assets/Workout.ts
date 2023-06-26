@@ -1,4 +1,4 @@
-interface Workout {
+export interface Workout {
     createdAt: string;
     load: number;
     reps: number;
@@ -6,5 +6,3 @@ interface Workout {
     updatedAt: string;
     _id: string;
 }
-
-export default Workout;
